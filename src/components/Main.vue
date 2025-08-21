@@ -297,9 +297,10 @@ useBoundedWatch(width, { min: 50, max: 5000, precision: 0 });
 useBoundedWatch(scale, { min: 0.1, max: 20.0, precision: 1 });
 useBoundedWatch(resultDecimalPlaces, { min: 0, max: 4, precision: 0 });
 
-watch(() => useDefaultParameters, (newValue) => {
+watch(() => useDefaultParameters.value, (newValue) => {
   if (newValue) {
     Object.assign(input, defaultInput);
+    validateInput.value = true;
   }
 });
 
