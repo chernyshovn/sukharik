@@ -11,7 +11,14 @@ const year = new Date().getFullYear();
   </main>
   <footer class="mt-auto">
     <div class="text-center p-3 footer">
-      &copy; {{ copyrightAuthorNames }}, {{ year }}
+      <p class="mb-1">
+        &copy; {{ copyrightAuthorNames }}, {{ year }}
+      </p>
+      <p class="mb-0">
+        <a href="https://github.com/chernyshovn/sukharik" target="_blank" class="github-link">
+          <icon :icon="['fab', 'github']" /> GitHub
+        </a>
+      </p>
     </div>
   </footer>
 </template>
@@ -20,5 +27,14 @@ const year = new Date().getFullYear();
   .footer {
     background-color: rgb(229, 228, 226, 0.5);
     border-top: 2px solid rgb(229, 228, 226);
+  }
+
+  .github-link {
+    color:black;
+    text-decoration: none;
+  }
+
+  .github-link:hover {
+    color: var(--bs-link-color);
   }
 </style>

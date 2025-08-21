@@ -3,5 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import './style.css'
 import App from './App.vue'
+import { FontAwesomeIcon } from './plugins/fontawesome'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.component('Icon', FontAwesomeIcon)
+
+app.mount('#app')
