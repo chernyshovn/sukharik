@@ -3,6 +3,7 @@ import { ref, reactive, computed, watch, watchEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useBoundedWatch } from '@/utils/boundedWatch';
 import { radToDeg, roundAndFormat, floor, ceil } from '@/utils/math';
+import { downloadSvg, downloadPng } from '@/utils/download';
 import Point from '@/domain/point';
 import Angel from '@/domain/angle';
 import SvgPoint from '@/components/svg/Point.vue';
@@ -304,6 +305,21 @@ watch(() => useDefaultParameters.value, (newValue) => {
   }
 });
 
+// download
+
+const svg = ref<SVGSVGElement | null>(null);
+
+const handleDownloadSvg = () => {
+  if (svg.value) {
+    downloadSvg(svg.value, 'sukharik.svg');
+  }
+}
+
+const handleDownloadPng = () => {
+  if (svg.value) {
+    downloadPng(svg.value, 'sukharik.png');
+  }
+}
 </script>
 
 <template>
@@ -382,11 +398,19 @@ watch(() => useDefaultParameters.value, (newValue) => {
           <span class="input-group-text fw-bold" :style="createColorStyle(CColor)" id="C">C</span>
           <input type="number" class="form-control" readonly aria-describedby="C" v-model="renderedC">
         </div>
-         <div class="switch-input mb-5">
+        <div class="switch-input mb-2">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="reflectY" checked v-model="reflectY">
             <label class="form-check-label lh-1" for="reflectY">Отразить</label>
           </div>
+        </div>
+        <div class="d-flex justify-content-center mb-5">
+          <button class="btn btn-sm btn-light me-2" @click="handleDownloadSvg">
+            <icon icon="download" /> SVG
+          </button>
+          <button class="btn btn-sm btn-light" @click="handleDownloadPng">
+            <icon icon="download" /> PNG
+          </button>
         </div>
 
         <h6>НАСТРОЙКИ</h6>
@@ -406,12 +430,12 @@ watch(() => useDefaultParameters.value, (newValue) => {
         <div class="switch-input">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="useExtendedParameters" checked v-model="useDefaultParameters">
-            <label class="form-check-label lh-1" for="useExtendedParameters">Размеры по умолчанию</label>
+            <label class="form-check-label lh-1" for="useExtendedParameters">Использовать стандартные размеры</label>
           </div>
         </div>
       </div>
       <div class="col-xl-10 col-lg-9 col-md-9 col-12 my-3 my-md-0 text-center" ref="figureCol">
-        <svg :width="width" :height="height" :viewBox="viewBox" xmlns="http://www.w3.org/2000/svg">
+        <svg ref="svg" :width="width" :height="height" :viewBox="viewBox" xmlns="http://www.w3.org/2000/svg">
           <g :transform="reflectY ? `scale(-1,1) translate(-${bounds.maxX + bounds.minX},0)` : ''">
             <!-- Alpha -->
             <svg-line :p1="alphaCenter" :p2="alphaAxisEnd" :stroke-width="0.5" stroke-dasharray="2,2" />
