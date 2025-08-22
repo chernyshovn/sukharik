@@ -410,7 +410,7 @@ watch(() => useDefaultParameters.value, (newValue) => {
           </div>
         </div>
       </div>
-      <div class="col-lg-10 col-md-9 col-12 text-center" ref="figureCol">
+      <div class="col-lg-10 col-md-9 col-12 my-3 my-md-0 text-center" ref="figureCol">
         <svg :width="width" :height="height" :viewBox="viewBox" xmlns="http://www.w3.org/2000/svg">
           <g :transform="reflectY ? `scale(-1,1) translate(-${bounds.maxX + bounds.minX},0)` : ''">
             <!-- Alpha -->
