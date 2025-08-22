@@ -308,17 +308,17 @@ watch(() => useDefaultParameters.value, (newValue) => {
 
 <template>
   <div class="container my-2">
-   <div class="row">
-      <h4 class="text-center">
-        Т-соединение
-        <br>
-        Определение позиций крепежа при наклонном ригеле
-      </h4>
-      <p class="text-center text-muted fst-italic mb-5">
-        Определение позиции крепежа для наклонного Т-соединения стойки с ригелем
-        светопрозрачных конструкций системы Alutech F50. Сухарный элемент из профиля F50.0415
-      </p>
-      <div class="col-lg-2 col-md-3 col-12">
+    <h4 class="text-center">
+      Т&#8209;соединение
+      <br>
+      Определение позиций крепежа при наклонном ригеле
+    </h4>
+    <p class="text-center text-muted fst-italic mb-5">
+      Определение позиции крепежа для наклонного Т&#8209;соединения стойки с ригелем
+      светопрозрачных конструкций системы Alutech F50. Сухарный элемент из профиля F50.0415.
+    </p>
+    <div class="row">
+      <div class="col-xl-2 col-lg-3 col-md-3 col-12">
         <h6>ПАРАМЕТРЫ</h6>
 
         <template v-if="!useDefaultParameters">
@@ -406,11 +406,11 @@ watch(() => useDefaultParameters.value, (newValue) => {
         <div class="switch-input">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="useExtendedParameters" checked v-model="useDefaultParameters">
-            <label class="form-check-label lh-1" for="useExtendedParameters">Использовать стандартные размеры</label>
+            <label class="form-check-label lh-1" for="useExtendedParameters">Размеры по умолчанию</label>
           </div>
         </div>
       </div>
-      <div class="col-lg-10 col-md-9 col-12 my-3 my-md-0 text-center" ref="figureCol">
+      <div class="col-xl-10 col-lg-9 col-md-9 col-12 my-3 my-md-0 text-center" ref="figureCol">
         <svg :width="width" :height="height" :viewBox="viewBox" xmlns="http://www.w3.org/2000/svg">
           <g :transform="reflectY ? `scale(-1,1) translate(-${bounds.maxX + bounds.minX},0)` : ''">
             <!-- Alpha -->
