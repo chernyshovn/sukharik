@@ -12,3 +12,15 @@
   outline: none;
   border: var(--bs-border-width) solid var(--bs-border-color);
 }
+
+input[type="number"][readonly] {
+  appearance: textfield;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"][readonly]::-webkit-outer-spin-button,
+input[type="number"][readonly]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
